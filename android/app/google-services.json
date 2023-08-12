@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "577344643598",
+    "project_id": "hesaplayici-72601",
+    "storage_bucket": "hesaplayici-72601.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577344643598:android:64f819974e6984a44a125f",
+        "android_client_info": {
+          "package_name": "com.example.hesapla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577344643598-sj1fs3ne1ab4hn21vqld181116j6f32k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hesapla",
+            "certificate_hash": "a4513247aae240a227e4693e33b405b457aa5c93"
+          }
+        },
+        {
+          "client_id": "577344643598-2da6087m6jduh9ut7idn2c8qrsp0ebm9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyBtTe6XhznWksPZFPkmq8T0_FjqwVCv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577344643598-2da6087m6jduh9ut7idn2c8qrsp0ebm9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "577344643598-dfb98rn01rf2ip9nsggk0mm23ini1v9q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hesapla.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577344643598:android:22e7b35cd4f89f084a125f",
+        "android_client_info": {
+          "package_name": "com.example.hesaplayici"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577344643598-2da6087m6jduh9ut7idn2c8qrsp0ebm9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyBtTe6XhznWksPZFPkmq8T0_FjqwVCv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577344643598-2da6087m6jduh9ut7idn2c8qrsp0ebm9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "577344643598-dfb98rn01rf2ip9nsggk0mm23ini1v9q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hesapla.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
