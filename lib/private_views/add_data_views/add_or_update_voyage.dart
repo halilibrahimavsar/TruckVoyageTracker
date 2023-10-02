@@ -106,17 +106,38 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
                         },
                         icon: const Icon(Icons.arrow_back_ios_new, size: 32),
                       ),
+                      // TODO
+                      (widget.existingData != null)
+                          ? const SizedBox.shrink()
+                          : TextButton(
+                              onPressed: () {
+                                _addTemporaryChanges();
+                              },
+                              style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(Colors.teal),
+                              ),
+                              child: const Text('SaveNow'),
+                            ),
                       (widget.existingData != null)
                           ? TextButton(
                               onPressed: () {
                                 _update(updateId: id);
                               },
+                              style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(Colors.blue),
+                              ),
                               child: const Text('Update'),
                             )
                           : TextButton(
                               onPressed: () {
                                 _add();
                               },
+                              style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(Colors.blue),
+                              ),
                               child: const Text('Save'),
                             ),
                     ],
@@ -318,5 +339,23 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
         );
       }
     }
+  }
+
+  void _addTemporaryChanges() {
+    FirestoreService().addVoyage(
+      data: {
+        fieldVoygeStartkm: departureKm,
+        fieldVoygeEndKm: returnKm,
+        fieldVoygePlace: wherItVoyage,
+        fieldVoygePrice: price,
+        fieldVoygeDrvr: driver,
+        fieldVoygeVehicle: vehicle,
+        fieldVoygeDepartureDate: Timestamp.fromDate(departureDate),
+        fieldVoygeReturnDate: Timestamp.fromDate(returnDate),
+        fieldGUserId: FirebaseAuth.instance.currentUser?.uid,
+      },
+    );
+
+    Navigator.of(context).pop();
   }
 }

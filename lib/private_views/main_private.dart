@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hesaplayici/private_views/add_data_views/add_or_update_voyage.dart';
+import 'package:hesaplayici/private_views/voyage_menu/temporary_field/temporary_page.dart';
 import 'package:hesaplayici/private_views/voyage_menu/voyage_menu.dart';
 import 'package:hesaplayici/services/auth/google_signin_provider.dart';
 import 'package:hesaplayici/utilities/show_custm_dialog.dart';
@@ -15,6 +16,7 @@ class MainPrivate extends StatefulWidget {
 }
 
 class MainPrivateState extends State<MainPrivate> {
+  int currentScreen = 0;
   @override
   void initState() {
     super.initState();
@@ -64,8 +66,8 @@ class MainPrivateState extends State<MainPrivate> {
               end: Alignment.bottomCenter,
             ),
           ),
-          child: const Center(
-            child: VoyageMenu(),
+          child: Center(
+            child: [const VoyageMenu(), const TemporaryPage()][currentScreen],
           ),
         ),
         drawer: Drawer(
@@ -108,6 +110,38 @@ class MainPrivateState extends State<MainPrivate> {
               ),
             ],
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentScreen,
+          type: BottomNavigationBarType.shifting,
+          unselectedItemColor: Colors.grey,
+          onTap: (value) {
+            switch (value) {
+              case 0:
+                setState(() {
+                  currentScreen = value;
+                });
+                break;
+              case 1:
+                setState(() {
+                  currentScreen = value;
+                });
+                break;
+              default:
+                currentScreen = 0;
+                break;
+            }
+          },
+          items: const [
+            BottomNavigationBarItem(
+              label: 'ye',
+              icon: Icon(Icons.abc),
+            ),
+            BottomNavigationBarItem(
+              label: 'yo',
+              icon: Icon(Icons.abc_outlined),
+            ),
+          ],
         ),
       ),
     );

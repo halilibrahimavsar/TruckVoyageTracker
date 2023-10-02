@@ -24,7 +24,6 @@ class ExpandItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, int> totals = {'totalKm': 0, 'totalPrice': 0};
     return StreamBuilder(
       stream: FirestoreService().getVoyageByDate(
         plate: plate,
@@ -47,12 +46,13 @@ class ExpandItem extends StatelessWidget {
                         itemBuilder: (context, index) {
                           final data = allData.elementAt(index);
 
-                          for (var element in allData) {
-                            totals['totalKm'] =
-                                (totals['totalKm']! + int.parse(element.endKm));
-                            totals['totalPrice'] = (totals['totalPrice']! +
-                                int.parse(element.placePrice));
-                          }
+                          int totalKm = (int.parse(data.endKm) -
+                                      int.parse(data.startKm) <
+                                  0)
+                              ? 0
+                              : int.parse(data.endKm) - int.parse(data.startKm);
+                          bool isVoyageFinished =
+                              totalKm != 0 && int.parse(data.placePrice) != 0;
 
                           return Slidable(
                             startActionPane: ActionPane(
@@ -124,70 +124,8 @@ class ExpandItem extends StatelessWidget {
                               ],
                             ),
                             child: GlassEffect(
-                              child: ExpansionTile(
-                                leading: Text('${index + 1}'),
-                                title: FittedBox(
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            '${int.parse(data.endKm) - int.parse(data.startKm)}',
-                                            style: const TextStyle(
-                                              color: Colors.green,
-                                            ),
-                                          ),
-                                          const Text(
-                                            ' Km',
-                                            style: TextStyle(fontSize: 8),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(width: 32),
-                                      Text(
-                                        DateFormat('dd/MM/yyyy')
-                                            .format(data.startDate),
-                                      ),
-                                      const SizedBox(width: 32),
-                                      Text(
-                                        '${data.placePrice} ₺',
-                                        style: const TextStyle(
-                                          color: Colors.green,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        'Baslangıc km :${data.startKm}',
-                                      ),
-                                      Text('Bitis km : ${data.endKm}'),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        DateFormat('yyyy.MM.d - HH:mm')
-                                            .format(data.startDate),
-                                      ),
-                                      Text(
-                                        DateFormat('yyyy.MM.d - HH:mm')
-                                            .format(data.endDate),
-                                      ),
-                                    ],
-                                  ),
-                                  Text('Sefer yeri ${data.placeName}'),
-                                ],
-                              ),
+                              child: expandedDetails(
+                                  index, isVoyageFinished, totalKm, data),
                             ),
                           );
                         },
@@ -208,6 +146,173 @@ class ExpandItem extends StatelessWidget {
             );
         }
       },
+    );
+  }
+
+  ExpansionTile expandedDetails(
+    int index,
+    bool isVoyageFinished,
+    int totalKm,
+    VoyageModel data,
+  ) {
+    return ExpansionTile(
+      leading: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text('${index + 1}'),
+          const [
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+            Icon(
+              Icons.circle,
+              color: Colors.yellow,
+            ),
+          ][isVoyageFinished ? 0 : 1],
+        ],
+      ),
+      title: FittedBox(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Text(
+                  totalKm.toString(),
+                  style: const TextStyle(
+                    color: Colors.green,
+                  ),
+                ),
+                const Text(
+                  ' Km',
+                  style: TextStyle(fontSize: 8),
+                ),
+              ],
+            ),
+            const SizedBox(width: 32),
+            Text(
+              DateFormat('dd/MM/yyyy').format(data.startDate),
+            ),
+            const SizedBox(width: 32),
+            Text(
+              '${data.placePrice} ₺',
+              style: const TextStyle(
+                color: Colors.green,
+              ),
+            ),
+          ],
+        ),
+      ),
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            blackedBackground(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      blackedBackground(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Baslangıc km:'),
+                            Text(
+                              data.startKm,
+                              style: const TextStyle(
+                                color: Colors.green,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      blackedBackground(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Bitis km :'),
+                            Text(
+                              data.endKm,
+                              style: const TextStyle(
+                                color: Colors.green,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            blackedBackground(
+              child: Column(
+                children: [
+                  blackedBackground(
+                    child: Column(
+                      children: [
+                        const Text('Başlangıc tarihi'),
+                        Text(
+                          DateFormat('yyyy.MM.d - HH:mm')
+                              .format(data.startDate),
+                          style: const TextStyle(
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  blackedBackground(
+                    child: Column(
+                      children: [
+                        const Text('Bitiş tarihi'),
+                        Text(
+                          DateFormat('yyyy.MM.d - HH:mm').format(data.endDate),
+                          style: const TextStyle(
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        SizedBox.fromSize(
+          size: const Size(300, 50),
+          child: blackedBackground(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text('Sefer yeri : '),
+                Text(
+                  data.placeName,
+                  style: const TextStyle(
+                    color: Colors.green,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container blackedBackground({child}) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.transparent.withOpacity(0.2),
+        border: Border.all(color: Colors.grey),
+      ),
+      child: child,
     );
   }
 }

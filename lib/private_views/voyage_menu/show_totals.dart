@@ -36,8 +36,10 @@ class ShowTotals extends StatelessWidget {
                   snapshot.data?.toList().reversed;
               allData?.forEach((element) {
                 totalPrice += int.parse(element.placePrice);
-                totalKm +=
-                    int.parse(element.endKm) - int.parse(element.startKm);
+                totalKm =
+                    (int.parse(element.endKm) - int.parse(element.startKm) < 0)
+                        ? 0
+                        : int.parse(element.endKm) - int.parse(element.startKm);
               });
               return GlassEffect(
                 child: Row(
