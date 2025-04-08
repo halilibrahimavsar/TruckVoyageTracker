@@ -49,7 +49,7 @@ class ShowTotals extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          const Text('Total Km'),
+                          const Text('Toplam KM'),
                           Text(
                             totalKm.toString(),
                             style: const TextStyle(color: Colors.green),
@@ -61,7 +61,7 @@ class ShowTotals extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          const Text('Total Price'),
+                          const Text('Toplam Tutar'),
                           Text(
                             totalPrice.toString(),
                             style: const TextStyle(color: Colors.green),
@@ -74,7 +74,7 @@ class ShowTotals extends StatelessWidget {
               );
             } else {
               return const Center(
-                child: Text('No data found'),
+                child: Text('Veri bulunamadı'),
               );
             }
 

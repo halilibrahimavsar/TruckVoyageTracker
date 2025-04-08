@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
                           default:
                             return const Center(
                               child: Text(
-                                  "Something goes wrong. Close aplication and re-open it"),
+                                  "Birşeyler ters gitti, uygulamayı yeniden başlatın ve internetinizi kontrol edin"),
                             );
                         }
                       },
@@ -57,10 +57,10 @@ class LoginPage extends StatelessWidget {
                             if (userCredential != null) {
                               UserCredential userC = userCredential;
 
-                              log("User signed in: ${userC.user?.displayName}");
+                              log("Giriş başarılı: ${userC.user?.displayName}");
                             }
                           },
-                          child: const Text('Sign in with Google'),
+                          child: const Text('Google ile giriş yap'),
                         ),
                       ),
                     );

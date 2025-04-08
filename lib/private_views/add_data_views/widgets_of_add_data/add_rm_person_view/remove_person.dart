@@ -36,7 +36,7 @@ class _RemovePersonFrmFrbseState extends State<RemovePersonFrmFrbse> {
                 child: Column(
                   children: [
                     const Text(
-                      'Remove a Person',
+                      'Sürücü sil',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -62,7 +62,7 @@ class _RemovePersonFrmFrbseState extends State<RemovePersonFrmFrbse> {
                           selectedPerson = null;
                         });
                       },
-                      child: const Text('Remove'),
+                      child: const Text('Sil'),
                     )
                   ],
                 ),

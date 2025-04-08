@@ -62,14 +62,15 @@ class SelectKmWidgetState extends State<SelectKmWidget> {
                     keyboardType: TextInputType.number,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This field can\'t be empty';
+                        return 'Bu alan boş olamaz';
                       }
                       return null;
                     },
                     onChanged: (value) {
                       _validateAndSendDataToParent();
                     },
-                    decoration: const InputDecoration(labelText: 'start km'),
+                    decoration:
+                        const InputDecoration(labelText: 'Başlangıç km'),
                   ),
                 ),
               ),
@@ -86,10 +87,10 @@ class SelectKmWidgetState extends State<SelectKmWidget> {
                     validator: (value) {
                       if (int.tryParse(_startKm.text) != null) {
                         if (value == null || value.isEmpty) {
-                          return 'This field can\'t be empty';
+                          return 'Bu alan boş olamaz';
                         } else if (int.parse(value) <
                             int.parse(_startKm.text)) {
-                          return 'end is less then start km';
+                          return 'Bitiş başlangıç kilometresinden küçük';
                         }
                       }
                       return null;
@@ -97,7 +98,7 @@ class SelectKmWidgetState extends State<SelectKmWidget> {
                     onChanged: (value) {
                       _validateAndSendDataToParent();
                     },
-                    decoration: const InputDecoration(labelText: 'end km'),
+                    decoration: const InputDecoration(labelText: 'Bitiş km'),
                   ),
                 ),
               ),
@@ -105,7 +106,7 @@ class SelectKmWidgetState extends State<SelectKmWidget> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Total km : ${numberFormat.format(totalKm)}"),
+            child: Text("Toplam km : ${numberFormat.format(totalKm)}"),
           ),
         ],
       ),

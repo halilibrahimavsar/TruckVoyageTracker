@@ -66,9 +66,9 @@ class ExpandItem extends StatelessWidget {
                                     showCustmDialog(
                                       context,
                                       title: 'Delete',
-                                      msg: 'Do you want to delete this item?',
-                                      cancelButton: 'No',
-                                      confirmButton: 'Yes, delete',
+                                      msg: 'Bu öğeyi sil?',
+                                      cancelButton: 'Hayır',
+                                      confirmButton: 'Evet, sil',
                                       confirmButtonColor: Colors.red,
                                       cancelButtonColor: Colors.green,
                                       functionWhenConfirm: () async {
@@ -83,7 +83,7 @@ class ExpandItem extends StatelessWidget {
                                   backgroundColor: const Color(0xFFFE4A49),
                                   foregroundColor: Colors.white,
                                   icon: Icons.delete,
-                                  label: 'Delete',
+                                  label: 'Sil',
                                 ),
                               ],
                             ),
@@ -119,7 +119,7 @@ class ExpandItem extends StatelessWidget {
                                       const Color.fromARGB(255, 114, 0, 135),
                                   foregroundColor: Colors.white,
                                   icon: Icons.update,
-                                  label: 'Update',
+                                  label: 'Güncelle',
                                 ),
                               ],
                             ),
@@ -136,7 +136,7 @@ class ExpandItem extends StatelessWidget {
               );
             } else {
               return const Center(
-                child: Text('No data found'),
+                child: Text('Veri yok'),
               );
             }
 

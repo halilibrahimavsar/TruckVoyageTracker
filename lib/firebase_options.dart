@@ -17,29 +17,17 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -57,6 +45,47 @@ class DefaultFirebaseOptions {
     appId: '1:577344643598:android:22e7b35cd4f89f084a125f',
     messagingSenderId: '577344643598',
     projectId: 'hesaplayici-72601',
-    storageBucket: 'hesaplayici-72601.appspot.com',
+    storageBucket: 'hesaplayici-72601.firebasestorage.app',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBM4mH9nGkZPK-XEBeGX94GZIlxIj8VdEU',
+    appId: '1:577344643598:web:51fb7b1d451348424a125f',
+    messagingSenderId: '577344643598',
+    projectId: 'hesaplayici-72601',
+    authDomain: 'hesaplayici-72601.firebaseapp.com',
+    storageBucket: 'hesaplayici-72601.firebasestorage.app',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyD13mjebpIg1rnvpzN9tUzAV2wk9JLBHm8',
+    appId: '1:577344643598:ios:ace4dd2c2672ac014a125f',
+    messagingSenderId: '577344643598',
+    projectId: 'hesaplayici-72601',
+    storageBucket: 'hesaplayici-72601.firebasestorage.app',
+    androidClientId: '577344643598-aeqm20p550qs1k0qenl5802ikjknt9db.apps.googleusercontent.com',
+    iosClientId: '577344643598-o26fo21jqnsufcqjvnei5bb6gerjl7mf.apps.googleusercontent.com',
+    iosBundleId: 'com.example.hesaplayici',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyD13mjebpIg1rnvpzN9tUzAV2wk9JLBHm8',
+    appId: '1:577344643598:ios:ace4dd2c2672ac014a125f',
+    messagingSenderId: '577344643598',
+    projectId: 'hesaplayici-72601',
+    storageBucket: 'hesaplayici-72601.firebasestorage.app',
+    androidClientId: '577344643598-aeqm20p550qs1k0qenl5802ikjknt9db.apps.googleusercontent.com',
+    iosClientId: '577344643598-o26fo21jqnsufcqjvnei5bb6gerjl7mf.apps.googleusercontent.com',
+    iosBundleId: 'com.example.hesaplayici',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBTNHWLfbt1fuvn9jADfExjx6YLBKR6RpY',
+    appId: '1:577344643598:web:f5e64127f0c13d074a125f',
+    messagingSenderId: '577344643598',
+    projectId: 'hesaplayici-72601',
+    authDomain: 'hesaplayici-72601.firebaseapp.com',
+    storageBucket: 'hesaplayici-72601.firebasestorage.app',
+  );
+
 }

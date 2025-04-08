@@ -106,7 +106,6 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
                         },
                         icon: const Icon(Icons.arrow_back_ios_new, size: 32),
                       ),
-                      // TODO
                       (widget.existingData != null)
                           ? const SizedBox.shrink()
                           : TextButton(
@@ -117,7 +116,7 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
                                 backgroundColor:
                                     MaterialStatePropertyAll(Colors.teal),
                               ),
-                              child: const Text('SaveNow'),
+                              child: const Text('Sonra Tamamla'),
                             ),
                       (widget.existingData != null)
                           ? TextButton(
@@ -128,7 +127,7 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
                                 backgroundColor:
                                     MaterialStatePropertyAll(Colors.blue),
                               ),
-                              child: const Text('Update'),
+                              child: const Text('Güncelle'),
                             )
                           : TextButton(
                               onPressed: () {
@@ -138,7 +137,7 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
                                 backgroundColor:
                                     MaterialStatePropertyAll(Colors.blue),
                               ),
-                              child: const Text('Save'),
+                              child: const Text('Kaydet'),
                             ),
                     ],
                   ),
@@ -210,7 +209,7 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
       showTopSnackBar(
         Overlay.of(context),
         const CustomSnackBar.info(
-          message: 'There should be not empty field!',
+          message: 'Boş alan varken kayıt yapılamaz!',
         ),
       );
       result = false;
@@ -218,7 +217,7 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
       showTopSnackBar(
         Overlay.of(context),
         const CustomSnackBar.info(
-          message: 'departure date is after return date',
+          message: 'Bitiş tarihi başlangıç tarihinden küçük olamaz',
         ),
       );
       result = false;
@@ -226,7 +225,8 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
       showTopSnackBar(
         Overlay.of(context),
         const CustomSnackBar.info(
-          message: 'start km is bigger than or equals to end km',
+          message:
+              'Başlangıç kilometresi bitiş kilometrese eşit veya küçük olamaz',
         ),
       );
       result = false;
@@ -238,24 +238,24 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
     if (_validate()) {
       {
         final dialogMsg = '''
-        Departure Date: ${DateFormat.yMd().add_Hm().format(departureDate)}
-        Return Date: ${DateFormat.yMd().add_Hm().format(returnDate)}
-        Start Kilometer: $departureKm
-        End Kilometer: $returnKm
-        Total Kilometer: $totalKm
-        Driver: $driver
-        Vehicle: $vehicle
-        Where its voyage: $wherItVoyage
-        Price: $price
+        Başlangıç Tarihi: ${DateFormat.yMd().add_Hm().format(departureDate)}
+        Bitiş tarihi: ${DateFormat.yMd().add_Hm().format(returnDate)}
+        Başlangıç kilometresi: $departureKm
+        bitiş kilometresi: $returnKm
+        Toplam kilometre: $totalKm
+        Sürücü: $driver
+        Araç: $vehicle
+        Sefer yeri: $wherItVoyage
+        Tutar: $price
       ''';
 
         // Show confirmation dialog or perform save operation
         showCustmDialog(
           context,
-          title: 'Do you want to update this voyage?',
+          title: 'Bu sefer güncellensin mi?',
           msg: dialogMsg,
-          cancelButton: "Exit",
-          confirmButton: 'Update',
+          cancelButton: "Hayır",
+          confirmButton: 'Evet',
           cancelButtonColor: Colors.black,
           confirmButtonColor: Colors.green,
           functionWhenConfirm: () {
@@ -278,7 +278,7 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
             showTopSnackBar(
               Overlay.of(context),
               const CustomSnackBar.success(
-                message: "Added new voyage",
+                message: "Yeni sefer eklendi",
               ),
             );
           },
@@ -292,24 +292,24 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
     if (_validate()) {
       {
         final dialogMsg = '''
-        Departure Date: ${DateFormat.yMd().add_Hm().format(departureDate)}
-        Return Date: ${DateFormat.yMd().add_Hm().format(returnDate)}
-        Start Kilometer: $departureKm
-        End Kilometer: $returnKm
-        Total Kilometer: $totalKm
-        Driver: $driver
-        Vehicle: $vehicle
-        Where its voyage: $wherItVoyage
-        Price: $price
+        Başlangıç Tarihi: ${DateFormat.yMd().add_Hm().format(departureDate)}
+        Bitiş tarihi: ${DateFormat.yMd().add_Hm().format(returnDate)}
+        Başlangıç kilometresi: $departureKm
+        bitiş kilometresi: $returnKm
+        Toplam kilometre: $totalKm
+        Sürücü: $driver
+        Araç: $vehicle
+        Sefer yeri: $wherItVoyage
+        Tutar: $price
       ''';
 
         // Show confirmation dialog or perform save operation
         showCustmDialog(
           context,
-          title: 'Do you want to add this voyage?',
+          title: 'Seferi eklemek istiyor musunuz?',
           msg: dialogMsg,
-          cancelButton: "Exit",
-          confirmButton: 'Add',
+          cancelButton: "HAYIR",
+          confirmButton: 'EVET',
           cancelButtonColor: Colors.black,
           confirmButtonColor: Colors.green,
           functionWhenConfirm: () {
@@ -331,7 +331,7 @@ class AddOrUpdateVoyageState extends State<AddOrUpdateVoyage> {
             showTopSnackBar(
               Overlay.of(context),
               const CustomSnackBar.success(
-                message: "Added new voyage",
+                message: "Sefer eklendi",
               ),
             );
           },

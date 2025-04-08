@@ -50,7 +50,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                         child: Column(
                           children: [
                             const Text(
-                              'Add a New Vehicle',
+                              'Yeni araç ekle',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
@@ -59,8 +59,8 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                               width: double.maxFinite,
                             ),
                             TextField(
-                              decoration: const InputDecoration(
-                                  labelText: 'Plate number'),
+                              decoration:
+                                  const InputDecoration(labelText: 'Plaka'),
                               onChanged: (value) {
                                 setState(() {
                                   plateName = value.toUpperCase();
@@ -78,8 +78,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                     showTopSnackBar(
                                       Overlay.of(context),
                                       const CustomSnackBar.error(
-                                        message:
-                                            "There is already the same vehicle!",
+                                        message: "Araç zaten mevcut!",
                                       ),
                                     );
                                   } else {
@@ -97,7 +96,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                   }
                                 }
                               },
-                              child: const Text('Save'),
+                              child: const Text('Kaydet'),
                             )
                           ],
                         ),
@@ -133,7 +132,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                             child: Column(
                               children: [
                                 const Text(
-                                  'Remove a Vehicle',
+                                  'Araç sil',
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
@@ -153,7 +152,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                       selectedVehicleToRemove = '';
                                     });
                                   },
-                                  child: const Text('Remove'),
+                                  child: const Text('Sil'),
                                 )
                               ],
                             ),
@@ -211,7 +210,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                     widget.sendDataToParent(selectedVehicle);
                   });
                 },
-                hint: const Text('Select a vehicle'),
+                hint: const Text('Araç seç'),
               );
             } else {
               return DropdownButton(
@@ -226,7 +225,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
             );
           default:
             return const Center(
-              child: Text("Something went wrong..."),
+              child: Text("Birşeyler ters gitti..."),
             );
         }
       },
@@ -269,7 +268,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                       selectedValue!; // Update selectedVehicleToRemove
                 });
               },
-              hint: const Text('Select a vehicle to remove'),
+              hint: const Text('Silmek için araç seç'),
             );
           case ConnectionState.waiting:
             return const Center(
@@ -277,7 +276,7 @@ class SelectVehicleWidgetState extends State<SelectVehicleWidget> {
             );
           default:
             return const Center(
-              child: Text("Something went wrong..."),
+              child: Text("Birşeyler ters gitti..."),
             );
         }
       },

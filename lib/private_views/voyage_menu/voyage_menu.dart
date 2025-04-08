@@ -77,7 +77,7 @@ class _VoyageMenuState extends State<VoyageMenu> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Text('Show just unfinished voyages'),
+                const Text('Tamamlanmayan seferleri göster'),
                 Switch(
                   value: isShowingUnfinishedVoyages,
                   onChanged: (value) {
@@ -118,7 +118,7 @@ class _VoyageMenuState extends State<VoyageMenu> {
                         case ConnectionState.active:
                           final allData = snapshot.data?.toList().reversed;
                           if (allData == null) {
-                            return const Text('No data');
+                            return const Text('Veri yok');
                           } else {
                             final bool isVhclInList = allData
                                 .map((e) => e.plate)
@@ -146,7 +146,7 @@ class _VoyageMenuState extends State<VoyageMenu> {
                                   isShowingUnfinishedVoyages = false;
                                 });
                               },
-                              hint: const Text('Select a vehicle'),
+                              hint: const Text('Araç seç'),
                             );
                           }
 
@@ -156,7 +156,7 @@ class _VoyageMenuState extends State<VoyageMenu> {
                           );
                         default:
                           return const Center(
-                            child: Text("Something went wrong..."),
+                            child: Text("Birşeyler ters gitti..."),
                           );
                       }
                     },

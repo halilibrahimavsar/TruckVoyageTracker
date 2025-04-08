@@ -7,6 +7,7 @@ import 'package:hesaplayici/services/auth/google_signin_provider.dart';
 import 'package:hesaplayici/utilities/show_custm_dialog.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
+// TODO : the total price and km is not showing correct information when there we delete or update some voyages
 class MainPrivate extends StatefulWidget {
   final User? user = FirebaseAuth.instance.currentUser;
   MainPrivate({super.key});
@@ -50,7 +51,7 @@ class MainPrivateState extends State<MainPrivate> {
               icon: const Icon(Icons.add),
             ),
           ],
-          title: const Text('Voyage'),
+          title: const Text('Sefer'),
         ),
         body: Container(
           decoration: const BoxDecoration(
@@ -90,12 +91,12 @@ class MainPrivateState extends State<MainPrivate> {
               ),
               ListTile(
                 textColor: Colors.red,
-                title: const Text('Log out'),
+                title: const Text('Çıkış yap'),
                 onTap: () {
                   showCustmDialog(
                     context,
                     title: 'Cıkış yap',
-                    msg: 'Log out from ${widget.user?.email}',
+                    msg: 'Hesaptan çıkış yap? ${widget.user?.email}',
                     cancelButton: 'VAZGEÇ',
                     confirmButton: 'ÇIKIŞ YAP',
                     cancelButtonColor: Colors.black,

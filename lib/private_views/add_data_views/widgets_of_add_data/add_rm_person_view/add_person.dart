@@ -38,14 +38,14 @@ class _AddPersonToFrbseState extends State<AddPersonToFrbse> {
                 child: Column(
                   children: [
                     const Text(
-                      'Add a New Person',
+                      'Yeni sürücü ekle',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 16),
                     TextField(
                       decoration:
-                          const InputDecoration(labelText: 'Name and Surname'),
+                          const InputDecoration(labelText: 'İsim ve Soyisim'),
                       onChanged: (value) {
                         setState(() {
                           nameAndSurname = value.toUpperCase();
@@ -64,7 +64,7 @@ class _AddPersonToFrbseState extends State<AddPersonToFrbse> {
                             showTopSnackBar(
                               Overlay.of(context),
                               const CustomSnackBar.error(
-                                message: "There is already the same person!",
+                                message: "Bu kişi zaten ekli!",
                               ),
                             );
                           } else {
@@ -82,7 +82,7 @@ class _AddPersonToFrbseState extends State<AddPersonToFrbse> {
                           }
                         }
                       },
-                      child: const Text('Save'),
+                      child: const Text('Kaydet'),
                     )
                   ],
                 ),

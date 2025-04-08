@@ -36,7 +36,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
             GlassEffect(
               child: Column(
                 children: [
-                  const Text('Departure Date'),
+                  const Text('Başlangıç Tarihi'),
                   DateTimePicker(
                     type: DateTimePickerType.dateTimeSeparate,
                     dateMask: 'd - MM - yyyy',
@@ -44,10 +44,10 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                     firstDate: DateTime(1997),
                     lastDate: DateTime(2100),
                     icon: const Icon(Icons.event),
-                    calendarTitle: "Departure Date",
+                    calendarTitle: "Başlangıç Tarihi",
                     use24HourFormat: true,
-                    dateLabelText: 'Date',
-                    timeLabelText: "Hour",
+                    dateLabelText: 'Tarih',
+                    timeLabelText: "Saat",
                     onChanged: (value) {
                       departureDate = DateTime.parse(value);
                       widget.sendDatesToParent(departureDate, returnDate);
@@ -60,7 +60,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
             GlassEffect(
               child: Column(
                 children: [
-                  const Text('Return Date'),
+                  const Text('Bitiş Tarihi'),
                   DateTimePicker(
                     type: DateTimePickerType.dateTimeSeparate,
                     dateMask: 'd - MM - yyyy',
@@ -68,10 +68,10 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                     firstDate: DateTime(1997),
                     lastDate: DateTime(2100),
                     icon: const Icon(Icons.event),
-                    calendarTitle: "Return Date",
+                    calendarTitle: "Bitiş Tarihi",
                     use24HourFormat: true,
-                    dateLabelText: 'Date',
-                    timeLabelText: "Hour",
+                    dateLabelText: 'Tarih',
+                    timeLabelText: "Saat",
                     onChanged: (value) {
                       returnDate = DateTime.parse(value);
                       widget.sendDatesToParent(departureDate, returnDate);

@@ -89,7 +89,7 @@ class _EditPathsState extends State<EditPaths> {
                                       },
                                       foregroundColor: Colors.white,
                                       icon: Icons.update,
-                                      label: 'Update',
+                                      label: 'Güncelle',
                                     )
                                   ],
                                 ),
@@ -106,7 +106,7 @@ class _EditPathsState extends State<EditPaths> {
                                       backgroundColor: const Color(0xFFFE4A49),
                                       foregroundColor: Colors.white,
                                       icon: Icons.delete,
-                                      label: 'Delete',
+                                      label: 'Sil',
                                     ),
                                   ],
                                 ),
@@ -126,7 +126,7 @@ class _EditPathsState extends State<EditPaths> {
                         );
                       } else {
                         return const Expanded(
-                          child: Center(child: Text('No data found')),
+                          child: Center(child: Text('Veri yok')),
                         );
                       }
                     case ConnectionState.waiting:
@@ -181,7 +181,7 @@ class _EditPathsState extends State<EditPaths> {
                 enabled: isUpdate ? false : true,
                 controller: placeName,
                 decoration: const InputDecoration(
-                  labelText: 'Place Name',
+                  labelText: 'Sefer yeri',
                 ),
               ),
               TextFormField(
@@ -191,7 +191,7 @@ class _EditPathsState extends State<EditPaths> {
                 ],
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                  labelText: 'Place Price',
+                  labelText: 'Sefer tutarı',
                 ),
               ),
               ElevatedButton(
@@ -213,7 +213,7 @@ class _EditPathsState extends State<EditPaths> {
                   placeName.text = '';
                   placePrice.text = '';
                 },
-                child: Text(isUpdate ? 'Update' : 'Add Place'),
+                child: Text(isUpdate ? 'Güncelle' : 'Ekle'),
               ),
             ],
           ),

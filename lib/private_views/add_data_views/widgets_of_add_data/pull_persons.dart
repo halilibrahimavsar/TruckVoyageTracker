@@ -49,7 +49,7 @@ class _PullPersonsState extends State<PullPersons> {
                     selectedValue!,
                   ); // Pass selectedValue directly
                 },
-                hint: const Text('Select a driver'),
+                hint: const Text('Sürücü seç'),
               );
             } else {
               return DropdownButton(
@@ -63,7 +63,7 @@ class _PullPersonsState extends State<PullPersons> {
             );
           default:
             return const Center(
-              child: Text("Something went wrong..."),
+              child: Text("Birşeyler ters gitti..."),
             );
         }
       },
